@@ -1,7 +1,7 @@
 ASGwrapper-balsa
 ---------------------
 
-ASGwrapper-asynctools is a helper project to abstract from the external tool calls for the Balsa tools.
+ASGwrapper-balsa is a helper project to abstract from the external tool calls for the Balsa tools.
 
 ### Build instructions ###
 
