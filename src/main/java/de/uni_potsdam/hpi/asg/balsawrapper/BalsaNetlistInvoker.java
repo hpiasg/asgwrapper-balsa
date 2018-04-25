@@ -26,6 +26,8 @@ import java.util.List;
 
 import de.uni_potsdam.hpi.asg.common.invoker.ExternalToolsInvoker;
 import de.uni_potsdam.hpi.asg.common.invoker.InvokeReturn;
+import de.uni_potsdam.hpi.asg.common.technology.Technology;
+import de.uni_potsdam.hpi.asg.protocols.io.main.Protocol;
 
 public class BalsaNetlistInvoker extends ExternalToolsInvoker {
 
@@ -37,8 +39,8 @@ public class BalsaNetlistInvoker extends ExternalToolsInvoker {
         return new BalsaNetlistInvoker().internalImplementComponent(technology, outFile, component, componentParams);
     }
 
-    public static InvokeReturn implementBreeze(String technology, File breezeFile, File outFile) {
-        return new BalsaNetlistInvoker().internalImplementBreeze(technology, breezeFile, outFile);
+    public static InvokeReturn implementBreeze(Technology tech, Protocol protocol, File breezeFile, File outFile) {
+        return new BalsaNetlistInvoker().internalImplementBreeze(tech, protocol, breezeFile, outFile);
     }
 
     private boolean internalImplementComponent(String technology, File outFile, String component, List<String> componentParams) {
@@ -60,14 +62,15 @@ public class BalsaNetlistInvoker extends ExternalToolsInvoker {
         return errorHandling(ret);
     }
 
-    private InvokeReturn internalImplementBreeze(String technology, File breezeFile, File outFile) {
+    private InvokeReturn internalImplementBreeze(Technology tech, Protocol protocol, File breezeFile, File outFile) {
+        String impl = tech.getBalsa().getTech() + "/" + protocol.getBalsaStyle();
         String parent = ".";
         String logFileName = "logfile.log";
 
         List<String> params = new ArrayList<>();
         //@formatter:off
         params.addAll(Arrays.asList(
-            "-X", technology, 
+            "-X", impl, 
             "-o", outFile.getName(), 
             "-L", logFileName,
             "-I", parent,
