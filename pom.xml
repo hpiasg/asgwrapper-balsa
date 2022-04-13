@@ -45,8 +45,8 @@ along with ASGwrapper-balsa.  If not, see <http://www.gnu.org/licenses/>.
 	</licenses>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<common.version>4.0.0</common.version>
-		<protocols.version>1.0.0</protocols.version>
+		<common.version>4.0.3</common.version>
+		<protocols.version>1.0.1</protocols.version>
 	</properties>
 	<build>
 		<resources>
